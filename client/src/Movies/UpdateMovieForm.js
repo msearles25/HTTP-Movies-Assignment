@@ -31,21 +31,9 @@ const UpdateMovieForm = props => {
         e.preventDefault();
         axios
             .put(`http://localhost:5000/api/movies/${updated.id}`, updated)
-            .then(res => 
-                props.movies.map(movie => {
-                    if(`${movie.id}` === props.match.params.id){
-                        props.setMovies([res.data])
-                    }
-                })
-
-                
-            
-                
-                // props.setMovies(
-                //     [...props.movies, res.data]
-                // )
+            .then(
+                 props.history.push(`/movies/${updated.id}`)
             )
-            props.history.push(`/movies/${updated.id}`);
     }
 
     return (
